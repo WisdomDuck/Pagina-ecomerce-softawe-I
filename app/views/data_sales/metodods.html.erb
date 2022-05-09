@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+  </head>
+
+<body class="is-preload">
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+      <!-- Main -->
+        <div id="main">
+          <div class="inner">
+
+            <!-- Header -->
+            <header id="header">
+              <div class="logo">
+                <a>Inventario Online</a>
+                
+              </div>
+            </header>
+
+            
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="down-content">
+                     <!-- <input type="submit" id="busqueda" onclick="estadisticas()" > -->
+
+                              <table id="myTable">
+                                <tr class="header">
+                                  <th style="width:40%;">Producto</th>
+                                  <th style="width:20%;">Cantidad de veces vendido</th>
+                                </tr>
+                                  <% @productos.each do |f| %>
+                                <tr>
+                                  <%= next if Product.find_by(codigo: f) == nil %>
+                                  <td><%= Product.find_by(codigo: f).nombre %></td>
+                                  <td><%= @codigosventa.count(f)  %></td>
+                                </tr>
+                                <% end %>
+                              </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+
+          </div>
+        </div>
+
+      <!-- Sidebar -->
+        <div id="sidebar">
+          <div class="inner">             
+            <!-- Menu -->
+            <nav id="menu">
+              <ul>
+                <li><a href="home">Inicio</a></li>
+                <li><a href="add">Añadir Producto</a></li>
+                <li><a href="verify">Verificar Inventario</a></li>
+                <li><a href="data_sales">Datos Historicos</a></li>
+                <li><a href="report">Ventas del dia </a></li>
+                <li><a href="venta_semanal">Ventas de la semana </a></li>
+                <li><a href="cart">venta</a></li>
+                <li><a <%= link_to "cerrar sesion", destroy_user_session_path, method: :delete %></a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+    </div>
+
+</body>
+
+
+  </body>
+
+</html>
